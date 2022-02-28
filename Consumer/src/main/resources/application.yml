@@ -1,9 +1,9 @@
 
 server:
-  port: 8010
+  port: 8080
 spring:
   application:
-    name: demo-producer
+    name: demo-consumer
 
 eureka:
   client:

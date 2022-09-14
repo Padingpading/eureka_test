@@ -14,9 +14,14 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EnableFeignClients(basePackages="com.padingpading.consumer")
 public class ConsumerApplication {
-
-
+    
     public static void main(String[] args) {
         SpringApplication.run(ConsumerApplication.class, args);
+    }
+    
+    @Bean
+    @LoadBalanced
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 }

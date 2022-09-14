@@ -9,3 +9,17 @@ eureka:
   client:
     serviceUrl:
       defaultZone: ${EUREKA_DEFAULT_ZONE:http://localhost:8000/eureka}
+
+#feign配置
+feign:
+  client:
+    config:
+      service:
+        #开启日志。
+        loggerLevel: FULL
+      service:
+
+logging:
+  level:
+    # Fegin 日志以社么级别监听哪个接口
+    com.padingpading.consumer.feign.ProducerFeignClient: debug

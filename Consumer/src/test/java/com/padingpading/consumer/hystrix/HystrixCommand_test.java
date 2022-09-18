@@ -1,6 +1,5 @@
 package com.padingpading.consumer.hystrix;
 
-import hystrix.CommandHello;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +27,7 @@ public class HystrixCommand_test {
      */
     @Test
     public void test_HystrixCommand_execute() {
-        CommandHello command = new CommandHello("ExampleGroup", "hystrix", 500);
+        CommandHello command = new CommandHello("ExampleGroup", "com/padingpading/consumer/hystrix", 500);
         // 同步执行
         String result = command.execute();
         logger.info("execute result is: {}", result);
@@ -43,7 +42,7 @@ public class HystrixCommand_test {
      */
     @Test
     public void test_HystrixCommand_queue() throws Exception {
-        CommandHello command = new CommandHello("ExampleGroup", "hystrix", 500);
+        CommandHello command = new CommandHello("ExampleGroup", "com/padingpading/consumer/hystrix", 500);
         // 异步执行，返回 Future
         Future<String> future = command.queue();
         logger.info("do something...");
@@ -58,7 +57,7 @@ public class HystrixCommand_test {
      */
     @Test
     public void test_HystrixCommand_observe_single() {
-        CommandHello command = new CommandHello("ExampleGroup", "hystrix", 500);
+        CommandHello command = new CommandHello("ExampleGroup", "com/padingpading/consumer/hystrix", 500);
         Observable<String> observable = command.observe();
         // 获取请求结果，toBlocking() 是为了同步执行，不加 toBlocking() 就是异步执行
         String result = observable.toBlocking().single();
@@ -74,7 +73,7 @@ public class HystrixCommand_test {
      */
     @Test
     public void test_HystrixCommand_observe_subscribe() {
-        CommandHello command = new CommandHello("ExampleGroup", "hystrix", 500);
+        CommandHello command = new CommandHello("ExampleGroup", "com/padingpading/consumer/hystrix", 500);
         Observable<String> observable = command.observe();
         // 订阅结果处理
         observable.toBlocking().subscribe(new Subscriber<String>() {
@@ -126,7 +125,7 @@ public class HystrixCommand_test {
      */
     @Test
     public void test_HystrixCommand_timeout_fallback() {
-        CommandHello command = new CommandHello("ExampleGroup", "hystrix", 1500);
+        CommandHello command = new CommandHello("ExampleGroup", "com/padingpading/consumer/hystrix", 1500);
         // 请求超时，返回降级逻辑中的数据
         String result = command.execute();
         logger.info("result is: {}", result);

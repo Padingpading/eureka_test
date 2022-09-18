@@ -1,14 +1,13 @@
-package hystrix;
+package com.padingpading.consumer.hystrix;
 
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
 /**
- * @author libin
- * @description
- * @date 2022-03-13
+ * 单条数据
  */
 public class CommandHello extends HystrixCommand<String> {
     private final Logger logger = LoggerFactory.getLogger(getClass());
@@ -18,7 +17,7 @@ public class CommandHello extends HystrixCommand<String> {
 
     public CommandHello(String group, String name, long timeout) {
         // 指定命令的分組，同一组使用同一个线程池
-        super(HystrixCommandGroupKey.Factory.asKey(group));
+        super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey(group)));
         this.name = name;
         this.timeout = timeout;
     }

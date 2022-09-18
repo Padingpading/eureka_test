@@ -1,7 +1,6 @@
 package com.padingpading.consumer.hystrix;
 
 import com.netflix.hystrix.strategy.concurrency.HystrixRequestContext;
-import hystrix.CommandHello;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,10 +32,10 @@ public class HystrixCommand_cache {
         HystrixRequestContext context = HystrixRequestContext.initializeContext();
 
         try {
-            CommandHello command1 = new CommandHello("ExampleGroup", "hystrix", 100);
+            CommandHello command1 = new CommandHello("ExampleGroup", "com/padingpading/consumer/hystrix", 100);
             CommandHello command2 = new CommandHello("ExampleGroup", "ribbon", 100);
-            CommandHello command3 = new CommandHello("ExampleGroup", "hystrix", 100);
-            CommandHello command4 = new CommandHello("ExampleGroupTwo", "hystrix", 100);
+            CommandHello command3 = new CommandHello("ExampleGroup", "com/padingpading/consumer/hystrix", 100);
+            CommandHello command4 = new CommandHello("ExampleGroupTwo", "com/padingpading/consumer/hystrix", 100);
 
             logger.info("result: {}", command1.execute());
             logger.info("result: {}", command2.execute());

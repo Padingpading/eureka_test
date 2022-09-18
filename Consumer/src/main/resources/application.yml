@@ -17,7 +17,6 @@ feign:
       service:
         #开启日志。
         loggerLevel: FULL
-      service:
 
 logging:
   level:

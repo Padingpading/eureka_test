@@ -1,4 +1,4 @@
-package hystrix;
+package com.padingpading.consumer.hystrix;
 
 import com.netflix.hystrix.HystrixCommandGroupKey;
 import com.netflix.hystrix.HystrixObservableCommand;

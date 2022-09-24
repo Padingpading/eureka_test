@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-@RequestMapping("/hystrix/fallback")
+@RequestMapping("/hystrix/circuit")
 public class CircuitController {
     private final Logger logger = LoggerFactory.getLogger(getClass());
     

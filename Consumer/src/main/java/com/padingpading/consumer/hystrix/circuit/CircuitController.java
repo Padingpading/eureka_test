@@ -1,4 +1,4 @@
-package com.padingpading.consumer.hystrix.fallback;
+package com.padingpading.consumer.hystrix.circuit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-
 @RestController
 @RequestMapping("/hystrix/fallback")
-public class FallbackController {
+public class CircuitController {
     private final Logger logger = LoggerFactory.getLogger(getClass());
     
     @Autowired
@@ -20,7 +19,7 @@ public class FallbackController {
     @GetMapping("/open")
     public ResponseEntity<String> cache() {
         //相同的id从缓存中获取。
-        CommandFallbackFailure commandFallbackFailure =new CommandFallbackFailure("苹果");
+        CommandCircuitFailure commandFallbackFailure =new CommandCircuitFailure("苹果");
         String execute = commandFallbackFailure.execute();
         return ResponseEntity.ok(execute);
     }

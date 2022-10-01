@@ -17,14 +17,17 @@ public class UserController {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @GetMapping("/v1/user/{id}")
-    public ResponseEntity<User> queryUser(@PathVariable Long id, @RequestParam String name) {
+    public ResponseEntity<User> queryUser(@PathVariable Long id, @RequestParam String name)
+            throws InterruptedException {
         logger.info("query params: id :{}, name:{}", id, name);
+        Thread.sleep(10000);
         return ResponseEntity.ok(new User(id, name, 10));
     }
 
     @PostMapping("/v1/user")
-    public ResponseEntity<User> createUser(@RequestBody User user) {
+    public ResponseEntity<User> createUser(@RequestBody User user) throws InterruptedException {
         logger.info("create params: {}", user);
+        Thread.sleep(10000);
         return ResponseEntity.ok(user);
     }
 }

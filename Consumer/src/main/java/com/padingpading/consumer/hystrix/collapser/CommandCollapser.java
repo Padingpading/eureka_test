@@ -2,6 +2,8 @@ package com.padingpading.consumer.hystrix.collapser;
 
 import com.netflix.hystrix.Hystrix;
 import com.netflix.hystrix.HystrixCollapser;
+import com.netflix.hystrix.HystrixCollapserKey;
+import com.netflix.hystrix.HystrixCollapserProperties;
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
 import com.netflix.hystrix.HystrixCommandKey;
@@ -17,6 +19,12 @@ public class CommandCollapser extends HystrixCollapser<List<ProductInfo>,Product
     private Long productId;
     
     public CommandCollapser( Long productId) {
+        super(Setter.withCollapserKey(HystrixCollapserKey.Factory.asKey("GetProductInfosCollapser"))
+                .andCollapserPropertiesDefaults(HystrixCollapserProperties.Setter()
+                        //批量大小。
+                        .withMaxRequestsInBatch(100)
+                        //延迟时间。
+                        .withTimerDelayInMilliseconds(20)));
         this.productId = productId;
     }
     

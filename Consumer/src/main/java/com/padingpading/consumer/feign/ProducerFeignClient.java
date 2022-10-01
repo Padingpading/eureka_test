@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
  * @description
  * @date 2022/3/9
  */
-@FeignClient(value = "demo-producer")
+@FeignClient(value = "demo-producer",fallback = ProducerFeignFallBack.class)
 public interface ProducerFeignClient {
 
     @GetMapping("/v1/user/{id}")

@@ -28,6 +28,12 @@ public class CommandThreadlocal extends HystrixCommand<String> {
                 .andThreadPoolPropertiesDefaults(HystrixThreadPoolProperties.Setter()
                         //核心线程
                         .withCoreSize(20)
+                        //最大线程数量。
+                        .withMaximumSize(30)
+                        //线程的活跃时间
+                        .withKeepAliveTimeMinutes(5000)
+                        //允许扩容到最大线程
+                        .withAllowMaximumSizeToDivergeFromCoreSize(true)
                         //等待队列的大小
                         .withQueueSizeRejectionThreshold(15)))
                 ;
